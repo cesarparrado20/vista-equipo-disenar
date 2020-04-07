@@ -1,0 +1,61 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+  }
+  :root {
+    /* variables */
+    --spacing: 24px;
+    --min-card-width: 250px;
+    --ratio-percent: 75%;
+    --addl-height: 100px;
+  }
+  body {
+    margin: 0;
+  }
+  /* just for the purposes of the demo */
+  header, footer, section, div {
+    border: 1px solid blue;
+    padding: var(--spacing);
+  }
+  section {
+    /* hide all the overflowing cards */
+    overflow: hidden;
+  }
+  article {
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
+    position: relative;
+  }
+  ul {
+    /* clear ul styles */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+   
+    /* additional gap */
+    grid-row-gap: var(--spacing);
+  }
+  li {
+    /* set up aspect ratio hack */
+    position: relative;
+  }
+  .absolute-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--min-card-width), 1fr));
+    grid-column-gap: var(--spacing);
+  }
+  .aspect-ratio {
+    padding-top: var(--ratio-percent);
+  }
+  .aspect-ratio:after {
+    content:"";
+    height: var(--addl-height);
+    display: block;
+    border-top: 1px solid blue;
+  }
